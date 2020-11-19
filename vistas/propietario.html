@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/deudor.js"></script>
+    <script src="/js/historial.js"></script>
+    <script src="/js/propietario.js"></script>
+    <title>Propietario</title>
+</head>
+<body>
+    <div>
+        <h2>Registrar usuario</h2>
+        <label for="nombres">Nombre: </label>
+        <input type="text" id="nombres" required>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" required>
+        <label for="celular">Celular: </label>
+        <input type="tel" id="celular" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="312-100-1234" required>
+        <label for="correo">Correo: </label>
+        <input type="email" id="correo" required>
+        <label for="password">Password: </label>
+        <input type="password" id="password" required>
+        <button type="submit" id="btnagregar">Agregar</button>
+    </div>
+    <div> <!--Cambiar a select-->
+        <h2>Registrar pago</h2> 
+        <select id="registrarpago">
+        </select>
+        <label for="cantidadpago">Cantidad: </label>
+        <input type="number" id="cantidadpago" required>
+        <label for="fechapago">Fecha: </label>
+        <input type="date" id="fechapago" required>
+        <button type="submit" id="btnpago">Registrar</button>
+    </div>
+    <div> <!--Cambiar a select-->
+        <h2>Aplicar cargo a uno/varios usuario (s)</h2>
+        <select id="registrarcargo">
+        </select>
+        <label for="cargo">Cargo: </label>
+        <input type="number" id="cargo" required>
+        <label for="fechacargo">Fecha: </label>
+        <input type="date"  id="fechacargo" required>
+        <button type="submit" id="btncargo">Registrar</button>
+
+    </div>
+    <div>
+        <h2>Aplicar cargo a todos los usuarios</h2>
+        <label for="cargotodos">Cantidad: </label>
+        <input type="number" id="cargotodos" required>
+        <label for="fechatodos">Fecha: </label>
+        <input type="date" id="fechatodos" required>
+        <button type="submit" id="btncargoTodos">Registrar</button>
+    </div>
+    <script src="/js/appPropietario.js"></script>
+</body>
+</html>

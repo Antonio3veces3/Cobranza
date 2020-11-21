@@ -1,20 +1,28 @@
 let database= JSON.parse(localStorage.getItem("bd"));
-let indice=0;
-function validacionExisteDeudor(telefono,contraseña){
-    let existentes= database.datos[0].deudores.length;
-    for(let i=0;i<existentes;i++){
-        if(database.datos[0].deudores[i].celular==telefono && database.datos[0].deudores[i].password==contraseña){
-            indice=i;
-            return true; 
+
+function ingresar(telefono,contraseña){
+    let existe= database.datos.length;
+    for(let i=0;i<existe;i++){
+        let deudor= database.datos[i].deudores.length;
+        for(let j=0;j<deudor;j++){
+            if(database.datos[i].deudores[j].celular==telefono && database.datos[i].deudores[j].password==contraseña){
+                database.login= true;
+                database.usr=telefono;
+                return true; 
+            }
         }
     }
 }
+
 document.getElementById("btningresar").addEventListener("click",()=>{
-    let phone= document.getElementById("tel").value;
-    let contraseña=document.getElementById("pass").value;
-    if(validacionExisteDeudor(phone,contraseña)==true){
-        location.replace("deudor.html");
+    let tel= document.getElementById("tel").value;
+    let contraseña= document.getElementById("pass").value;
+    let verdad= ingresar(tel,contraseña);
+    if(verdad!=true){
+        alert("No te han registrado");
     }else{
-        alert("No estas registrado");
+        localStorage.clear();
+        localStorage.setItem("bd",JSON.stringify(database));
+        location.replace("deudor.html");
     }
 });

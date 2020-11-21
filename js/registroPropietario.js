@@ -1,6 +1,6 @@
 let database= JSON.parse(localStorage.getItem("bd"));
 if(!database || database==undefined){
-    database= {datos: []}
+    database= {login: false, usr:"", datos: []}
 } 
 document.getElementById("btnclick").addEventListener("click",()=>{
     let div= document.getElementById("registro");
@@ -25,10 +25,6 @@ function validacionExisteRegistro(nombres,apellidos){
 
 
 document.getElementById("btnRegistrar").addEventListener("click",()=>{
-    let texto=" ";
-    texto+=`
-        <p>Tu registro se realizó correctamente</p>
-    `;
     let nombres= document.getElementById("nombre").value;
     let apellidos= document.getElementById("apellido").value;
     let celular= document.getElementById("telefono").value;
@@ -41,8 +37,7 @@ document.getElementById("btnRegistrar").addEventListener("click",()=>{
         database.datos.push(prop);
         localStorage.setItem("bd",JSON.stringify(database));
         location.reload();
-        document.getElementById("registro").innerHTML+=texto;
-        console.log("creado");
+        alert("Creado correctamente");
     }
 });
 document.getElementById("btnlogin").addEventListener("click",()=>{
@@ -50,6 +45,10 @@ document.getElementById("btnlogin").addEventListener("click",()=>{
     let pass=document.getElementById("passwordL").value;
     if(validacionExiste(telefono,pass)==true){
         location.replace("propietario.html");
+        database.login=true;
+        database.usr=telefono;
+        localStorage.clear();
+        localStorage.setItem("bd",JSON.stringify(database));
     }else{
         alert("No estas registrado");
     }
